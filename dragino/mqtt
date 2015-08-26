@@ -1,7 +1,7 @@
 #include <Process.h>
 #include "MQTTclient.h"
 #include "DHT.h"
-#include <OneWire.h> //Se importan las librerías
+#include <OneWire.h> 
 #include <DallasTemperature.h>
 
 #define ONE_WIRE_BUS_PIN 3
@@ -15,7 +15,6 @@ DeviceAddress probe02 =  {0x28, 0x82, 0x2F, 0xF1, 0x05, 0x00, 0x00, 0xC6};
 
 #define MQTT_HOST "190.97.168.236" 
 #define DHTPIN A0     
-//#define DHTPIN2 A1
 
 #define DHTTYPE DHT22   // DHT 22  (AM2302)
 DHT dht(DHTPIN, DHTTYPE);
@@ -24,8 +23,8 @@ DHT dht(DHTPIN, DHTTYPE);
 
 char message_buff[100];
 char message_buff2[100];
-String id_sensor = "test@redlibre.cl";
-String id_sensor2 = "test2@redlibre.cl";
+String id_sensor = "sensor1";
+String id_sensor2 = "sensor2";
 int led = 4;
 //int led2 = 3 ;
 int led3 = 2; 
@@ -34,15 +33,12 @@ float t2;
 
 void setup() {
     
-  // start serial
   Serial.begin(9600);
-  // remember the bridge!
   Bridge.begin();
-  // begin the client library (initialize host)
   mqtt.begin(MQTT_HOST, 1883);
   dht.begin();
   //dht2.begin();
-  sensors.begin(); //Se inician los sensores
+  sensors.begin();
   sensors.setResolution(probe01, 10);
     sensors.setResolution(probe02, 10);
   pinMode(led, OUTPUT);
@@ -104,10 +100,9 @@ void loop() {
    }
 }
 
-// use callback function to work with your messages
 void someEvent(const String& topic, const String& subtopic, const String& message) {
   
-  // print the topic and message
+  
   Serial.print("topic: ");
   Serial.println(topic);
   Serial.print("message: "); 
@@ -115,7 +110,7 @@ void someEvent(const String& topic, const String& subtopic, const String& messag
   
   //int integer = 25;
  // String integer = hola;
-  // publish an integer to a test topic
+  
   mqtt.publish("test/dos", "Recibido_Control_D1");
    if (message == "s3up") {
     digitalWrite(led, HIGH);
