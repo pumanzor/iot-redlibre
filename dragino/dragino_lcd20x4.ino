@@ -5,8 +5,9 @@
 #pines LCD RS pin to digital pin 10, LCD Enable pin to digital pin 9, LCD D4 pin to digital pin 6, 
 #LCD D5 pin to digital pin 4, LCD D6 pin to digital pin 3, LCD D7 pin to digital pin 2
 #la representacion de temperatura y humedad en el display LCD es en 4 filas, las filas que se muestran en este display
-#son los datos que provienen desde el broker en el topico test/temp que en este caso seria el mismo topico donde
-#se publican.
+#son los datos que provienen desde el broker en el topico test/temp, para efectos de prueba en este sketch se ha
+#utilizado el mismo topico de publicacion y subscripcion, pero puede ser modificado si se requiere representar
+#en el display otros datos, solo hay que filtrar el string mediante el id del sensor.
 
 #include <Process.h>
 #include "MQTTclient.h"
