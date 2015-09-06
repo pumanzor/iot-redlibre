@@ -4,6 +4,9 @@
 #el display LCD 20*4 Characters - White back utiliza la libreria LiquidCrystal y debe ser conectado al dragino a los
 #pines LCD RS pin to digital pin 10, LCD Enable pin to digital pin 9, LCD D4 pin to digital pin 6, 
 #LCD D5 pin to digital pin 4, LCD D6 pin to digital pin 3, LCD D7 pin to digital pin 2
+#la representacion de temperatura y humedad en el display LCD es en 4 filas, las filas que se muestran en este display
+#son los datos que provienen desde el broker en el topico test/temp que en este caso seria el mismo topico donde
+#se publican.
 
 #include <Process.h>
 #include "MQTTclient.h"
@@ -88,14 +91,14 @@ String idsec = message.substring(thirdCommaIndex);
 if (idsec == ",sensor8")
 {
   lcd.setCursor(0,0);
-String valores =  "S1:" + temps1 + "C " + tempa1  + "C " + humi1 + "%";
+String valores =  "" + temps1 + "C " + tempa1  + "C " + humi1 + "%";
 lcd.print(valores);
 }
 
 if (idsec == ",sensor7")
 {
   lcd.setCursor(0,1);
-String valores =  "S2:" + temps1 + "C " + tempa1  + "C " + humi1 + "%";
+String valores =  "" + temps1 + "C " + tempa1  + "C " + humi1 + "%";
 lcd.print(valores);
 }
 
@@ -103,14 +106,14 @@ lcd.print(valores);
 if (idsec == ",sensor6")
 {
   lcd.setCursor(0,2);
-String valores =  "S3:" + temps1 + "C " + tempa1  + "C " + humi1 + "%";
+String valores =  "" + temps1 + "C " + tempa1  + "C " + humi1 + "%";
 lcd.print(valores);
 }
 
 if (idsec == ",sensor5")
 {
   lcd.setCursor(0,3);
-String valores =  "S4:" + temps1 + "C " + tempa1  + "C " + humi1 + "%";
+String valores =  "" + temps1 + "C " + tempa1  + "C " + humi1 + "%";
 lcd.print(valores);
 }
  
