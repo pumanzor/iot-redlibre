@@ -114,11 +114,11 @@ if (idsec == ",sectora")
   lcd.print(tempsuelo);
   
   lcd.setCursor(0,2);
-  String tempaerea =  "Temp Aerea: " + temps1 + (char)223 + "C";
+  String tempaerea =  "Temp Aerea: " + tempa1 + (char)223 + "C";
   lcd.print(tempaerea);
   
   lcd.setCursor(0,3);
-  String humedad =  "Humedad Re:  " + temps1 + "%";
+  String humedad =  "Humedad Re:  " + humi1 + "%";
   lcd.print(humedad);
   
 }
@@ -137,11 +137,11 @@ if (idsec == ",sectorb")
   lcd.print(tempsuelo);
   
   lcd.setCursor(0,2);
-  String tempaerea =  "Temp Aerea: " + temps1 + (char)223 + "C";
+  String tempaerea =  "Temp Aerea: " + tempa1 + (char)223 + "C";
   lcd.print(tempaerea);
   
   lcd.setCursor(0,3);
-  String humedad =  "Humedad Re:  " + temps1 + "%";
+  String humedad =  "Humedad Re:  " + humi1 + "%";
   lcd.print(humedad);
   
 }
@@ -159,11 +159,11 @@ if (idsec == ",sectorc")
   lcd.print(tempsuelo);
   
   lcd.setCursor(0,2);
-  String tempaerea =  "Temp Aerea: " + temps1 + (char)223 + "C";
+  String tempaerea =  "Temp Aerea: " + tempa1 + (char)223 + "C";
   lcd.print(tempaerea);
   
   lcd.setCursor(0,3);
-  String humedad =  "Humedad Re:  " + temps1 + "%";
+  String humedad =  "Humedad Re:  " + humi1 + "%";
   lcd.print(humedad);
   
 }
@@ -181,11 +181,11 @@ if (idsec == ",sectord")
   lcd.print(tempsuelo);
   
   lcd.setCursor(0,2);
-  String tempaerea =  "Temp Aerea: " + temps1 + (char)223 + "C";
+  String tempaerea =  "Temp Aerea: " + tempa1 + (char)223 + "C";
   lcd.print(tempaerea);
   
   lcd.setCursor(0,3);
-  String humedad =  "Humedad Re:  " + temps1 + "%";
+  String humedad =  "Humedad Re:  " + humi1 + "%";
   lcd.print(humedad);
   
 }
