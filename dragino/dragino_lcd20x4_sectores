@@ -95,15 +95,15 @@ int commaIndex = message.indexOf(',');
 int secondCommaIndex = message.indexOf(',',commaIndex+1);
 int thirdCommaIndex = message.indexOf(',',secondCommaIndex+1);
 
-String temps1 = message.substring(0,commaIndex);
-String tempa1 = message.substring(commaIndex+1,secondCommaIndex);
+String tempa1 = message.substring(0,commaIndex);
+String temps1 = message.substring(commaIndex+1,secondCommaIndex);
 String humi1 = message.substring(secondCommaIndex+1,thirdCommaIndex);
 String idsec = message.substring(thirdCommaIndex);
 
 
 
 if (idsec == ",sectora")
-{
+{lcd.clear();
   lcd.setCursor(0,0);
   String horab = getTimeStamp();
   String titulo = "SECTOR A - " + horab + "";
@@ -126,7 +126,7 @@ if (idsec == ",sectora")
 
 
 if (idsec == ",sectorb")
-{
+{lcd.clear();
   lcd.setCursor(0,0);
   String horab = getTimeStamp();
   String titulo = "SECTOR B - " + horab + "";
@@ -148,7 +148,7 @@ if (idsec == ",sectorb")
 
 
 if (idsec == ",sectorc")
-{
+{lcd.clear();
   lcd.setCursor(0,0);
   String horab = getTimeStamp();
   String titulo = "SECTOR C - " + horab + "";
@@ -170,7 +170,7 @@ if (idsec == ",sectorc")
 
 
 if (idsec == ",sectord")
-{
+{lcd.clear();
   lcd.setCursor(0,0);
   String horab = getTimeStamp();
   String titulo = "SECTOR d - " + horab + "";
@@ -193,3 +193,5 @@ if (idsec == ",sectord")
 
  
 }
+
+
