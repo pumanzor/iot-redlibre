@@ -1,0 +1,195 @@
+
+#include <Process.h>
+#include "MQTTclient.h"
+#include "DHT.h"
+#include <OneWire.h> //Se importan las librerías
+#include <DallasTemperature.h>
+#include <LiquidCrystal.h>
+
+#define ONE_WIRE_BUS_PIN A1
+float  tempC2 = 0;
+float  tempC3 = 0;
+
+OneWire oneWire(ONE_WIRE_BUS_PIN);
+DallasTemperature sensors(&oneWire);
+DeviceAddress probe01 =  {0x28, 0xC7, 0xEB, 0xF0, 0x05, 0x00, 0x00, 0xEA};
+
+#define MQTT_HOST "190.97.168.236" 
+#define DHTPIN A0     
+//#define DHTPIN2 A1
+
+#define DHTTYPE DHT11   // DHT 22  (AM2302)
+DHT dht(DHTPIN, DHTTYPE);
+//DHT dht2(DHTPIN2, DHTTYPE);
+
+
+char message_buff[100];
+char message_buff2[100];
+char message[256];
+String id_sensor = "sectora";
+unsigned long time;
+float t2;
+LiquidCrystal lcd(10, 9, 6, 4, 3, 2);
+
+void setup() {
+    lcd.begin(20, 4);
+  Serial.begin(9600);
+  Bridge.begin();
+  mqtt.begin(MQTT_HOST, 1883);
+  dht.begin();
+  sensors.begin(); //Se inician los sensores
+  sensors.setResolution(probe01, 10);
+  
+  mqtt.subscribe("test/temp", someEvent);
+
+
+}
+
+
+void loop() {
+  float h = dht.readHumidity();
+  float t = dht.readTemperature();
+
+ sensors.requestTemperatures();
+ tempC2 = sensors.getTempC(probe01);
+ 
+   if (millis() > (time + 30000)) {
+       time = millis();
+  
+  String pubString = "" + String(t) + "," + String(tempC2) + "," + String(h) + "," + id_sensor + "" ;
+   pubString.toCharArray(message_buff, pubString.length()+1);
+   mqtt.publish("test/temp",message_buff );
+
+   }
+   else{
+   
+  mqtt.monitor();
+   }
+}
+
+
+String getTimeStamp() {
+  String result;
+  Process time;
+  // date is a command line utility to get the date and the time
+  // in different formats depending on the additional parameter
+  time.begin("date");
+  time.addParameter("+%T");  // parameters: D for the complete date mm/dd/yy
+  //             T for the time hh:mm:ss
+  time.run();  // run the command
+
+  // read the output of the command
+  while (time.available() > 0) {
+    char c = time.read();
+    if (c != '\n') {
+      result += c;
+    }
+  }
+
+  return result;
+}
+
+void someEvent(const String& topic, const String& subtopic, const String& message) {
+
+int commaIndex = message.indexOf(',');
+int secondCommaIndex = message.indexOf(',',commaIndex+1);
+int thirdCommaIndex = message.indexOf(',',secondCommaIndex+1);
+
+String temps1 = message.substring(0,commaIndex);
+String tempa1 = message.substring(commaIndex+1,secondCommaIndex);
+String humi1 = message.substring(secondCommaIndex+1,thirdCommaIndex);
+String idsec = message.substring(thirdCommaIndex);
+
+
+
+if (idsec == ",sectora")
+{
+  lcd.setCursor(0,0);
+  String horab = getTimeStamp();
+  String titulo = "SECTOR A - " + horab + "";
+  lcd.print(titulo);
+  
+  lcd.setCursor(0,1);
+  String tempsuelo =  "Temp Suelo: " + temps1 + (char)223 + "C";
+  lcd.print(tempsuelo);
+  
+  lcd.setCursor(0,2);
+  String tempaerea =  "Temp Aerea: " + temps1 + (char)223 + "C";
+  lcd.print(tempaerea);
+  
+  lcd.setCursor(0,3);
+  String humedad =  "Humedad Re:  " + temps1 + "%";
+  lcd.print(humedad);
+  
+}
+
+
+
+if (idsec == ",sectorb")
+{
+  lcd.setCursor(0,0);
+  String horab = getTimeStamp();
+  String titulo = "SECTOR B - " + horab + "";
+  lcd.print(titulo);
+  
+  lcd.setCursor(0,1);
+  String tempsuelo =  "Temp Suelo: " + temps1 + (char)223 + "C";
+  lcd.print(tempsuelo);
+  
+  lcd.setCursor(0,2);
+  String tempaerea =  "Temp Aerea: " + temps1 + (char)223 + "C";
+  lcd.print(tempaerea);
+  
+  lcd.setCursor(0,3);
+  String humedad =  "Humedad Re:  " + temps1 + "%";
+  lcd.print(humedad);
+  
+}
+
+
+if (idsec == ",sectorc")
+{
+  lcd.setCursor(0,0);
+  String horab = getTimeStamp();
+  String titulo = "SECTOR C - " + horab + "";
+  lcd.print(titulo);
+  
+  lcd.setCursor(0,1);
+  String tempsuelo =  "Temp Suelo: " + temps1 + (char)223 + "C";
+  lcd.print(tempsuelo);
+  
+  lcd.setCursor(0,2);
+  String tempaerea =  "Temp Aerea: " + temps1 + (char)223 + "C";
+  lcd.print(tempaerea);
+  
+  lcd.setCursor(0,3);
+  String humedad =  "Humedad Re:  " + temps1 + "%";
+  lcd.print(humedad);
+  
+}
+
+
+if (idsec == ",sectord")
+{
+  lcd.setCursor(0,0);
+  String horab = getTimeStamp();
+  String titulo = "SECTOR d - " + horab + "";
+  lcd.print(titulo);
+  
+  lcd.setCursor(0,1);
+  String tempsuelo =  "Temp Suelo: " + temps1 + (char)223 + "C";
+  lcd.print(tempsuelo);
+  
+  lcd.setCursor(0,2);
+  String tempaerea =  "Temp Aerea: " + temps1 + (char)223 + "C";
+  lcd.print(tempaerea);
+  
+  lcd.setCursor(0,3);
+  String humedad =  "Humedad Re:  " + temps1 + "%";
+  lcd.print(humedad);
+  
+}
+
+
+ 
+}
