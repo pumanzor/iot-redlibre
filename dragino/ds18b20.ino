@@ -27,7 +27,7 @@ DHT dht(DHTPIN, DHTTYPE);
 char message_buff[100];
 char message_buff2[100];
 char message[256];
-String id_sensor = "test4";
+String id_sensor = "prueba5";
 
 
 float t2;
@@ -43,7 +43,7 @@ void setup() {
   sensors.begin(); 
   //sensors.setResolution(probe01, 10);
   
-  mqtt.subscribe("test/temp", someEvent);
+  mqtt.subscribe("rr/temp", someEvent);
 
 
 }
@@ -57,7 +57,15 @@ void loop() {
  
  tempC2 = sensors.getTempCByIndex(0),4;
  //tempC2 = sensors.getTempC(probe01);
-   if (millis() > (time + 20000)) {
+ 
+ if (isnan(t) || isnan(h)) {
+    Serial.println("Failed to from DHT");
+  }
+  
+  else {
+ 
+ 
+   if (millis() > (time + 5000)) {
        time = millis();
   
  String pubString = "" + String(t) + "," + String(tempC2) + "," + String(h) + "," + id_sensor + "";
@@ -69,6 +77,7 @@ void loop() {
    
   mqtt.monitor();
    }
+  }
 
 }
 
