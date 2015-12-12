@@ -1,0 +1,22 @@
+opkg install python python-sqlite3 pyyaml
+opkg install python-sqlite
+opkg install python-expat
+opkg install python-openssl
+
+opkg install python-bzip2
+
+easy_install
+
+opkg install distribute
+
+pip
+
+​pip usage:
+
+easy_install pip
+
+Install
+
+Run command:
+
+pip install paho-mqtt
