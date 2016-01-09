@@ -1,29 +1,9 @@
 import paho.mqtt.client as mqtt
 import json, time
-import os
+import mraa
 
-# ----- CHANGE THESE FOR YOUR SETUP -----
-MQTT_HOST = "190.97.168.236"
-MQTT_PORT = 1883
-# ---------------------------------------
-
-
-# The callback function for when the client connects to broker
-def on_connect(client, userdata, rc):
-    print("\nConnected with result code " + str(rc) + "\n")
-
-    #Subscribing in on_connect() means that if we lose the connection and
-    # reconnect then subscriptions will be renewed.
-    client.subscribe("/mcu/#")  # Connect to everything in /mcu topic
-    print("Subscibed to /mcu/#")
-
-
-# The callback function for when a message on /mcu/rgbled_status/ is published
-def on_message_rgbled(client, userdata, msg):
-    print("\n\t* LED UPDATED ("+msg.topic+"): " + str(msg.payload))
-import paho.mqtt.client as mqtt
-import json, time
-import os
+led = mraa.Gpio(2)
+led.dir(mraa.DIR_OUT)
 
 # ----- CHANGE THESE FOR YOUR SETUP -----
 MQTT_HOST = "190.97.168.236"
@@ -45,10 +25,10 @@ def on_connect(client, userdata, rc):
 def on_message_rgbled(client, userdata, msg):
     print("\n\t* LED UPDATED ("+msg.topic+"): " + str(msg.payload))
     if msg.payload == "1": 
-	os.system("/root/on.sh")
+	led.write(1)
         client.publish("mcu/status", "ENCENDIDO")
     else:
-       os.system("/root/off.sh")
+       led.write(0)
        client.publish("mcu/status", "APAGADO")
 # Call this if input is invalid
 def command_error():
