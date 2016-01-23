@@ -1,1 +1,5 @@
 avrdude -p m32u4 -c linuxgpio -v -e -U flash:w:Caterina-smart7688.hex -U lock:w:0x0f:m
+
+uci set yunbridge.config.disabled='0'
+uci commit
+reboot; exit
