@@ -47,7 +47,7 @@ def on_message_iotrl(client, userdata, msg):
 def command_error():
     print("Error: Unknown command")
 
-client = mqtt.Client(client_id="linkit7688-patio")
+client = mqtt.Client(client_id="linkit7688-stepper-motor")
 
 # Callback declarations (functions run based on certain messages)
 client.on_connect = on_connect
