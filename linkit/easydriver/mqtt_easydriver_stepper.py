@@ -9,16 +9,12 @@ pin0.dir(mraa.DIR_OUT)
 # ----- CHANGE THESE FOR YOUR SETUP -----
 MQTT_HOST = "190.97.168.236"
 MQTT_PORT = 1883
+#---------------------------------------
 
 def on_connect(client, userdata, rc):
     print("\nConnected with result code " + str(rc) + "\n")
-
-    #Subscribing in on_connect() means that if we lose the connection and
-    # reconnect then subscriptions will be renewed.
-    #client.subscribe("/pyxo/xyusers/{USERNAME}/{APIKEY}/iot/control/".format(**vars()), 2)  # Connect to everything in /mcu topic
     client.subscribe("/pryxo/yxusers/motor/control/")  
     print("Subscribed to homecontrol")
-
 
 def on_message_iotrl(client, userdata, msg):
     print("\n\t* Linkit UPDATED ("+msg.topic+"): " + str(msg.payload))
@@ -33,6 +29,7 @@ def on_message_iotrl(client, userdata, msg):
 	time.sleep(2) 
         client.publish("/pryxo/yxusers/iot/status/", "derecha", 2)
     if msg.payload == "m0":
+    	pin0.write(0)
 	pin1 = mraa.Gpio(1)
 	pin1.dir(mraa.DIR_OUT)
 	pin1.write(1)
@@ -49,13 +46,11 @@ def command_error():
 
 client = mqtt.Client(client_id="linkit7688-stepper-motor")
 
-# Callback declarations (functions run based on certain messages)
 client.on_connect = on_connect
 client.message_callback_add("/pryxo/yxusers/motor/control/", on_message_iotrl)
 
-# This is where the MQTT service connects and starts listening for messages
 client.connect(MQTT_HOST, MQTT_PORT, 60)
-client.loop_start()  # Background thread to call loop() automatically
+client.loop_start() 
 
 # Main program loop
 while True:
