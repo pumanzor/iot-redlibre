@@ -7,7 +7,7 @@ pin0 = mraa.Gpio(0)
 pin0.dir(mraa.DIR_OUT)
 
 # ----- CHANGE THESE FOR YOUR SETUP -----
-MQTT_HOST = "190.97.168.236"
+MQTT_HOST = "190.97.169.126" #Our free test MQTT server , please use with moderation
 MQTT_PORT = 1883
 #---------------------------------------
 
