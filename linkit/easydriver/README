@@ -15,7 +15,9 @@ http://labs.mediatek.com/site/global/developer_tools/mediatek_linkit_smart_7688/
 
 or this link in spanish
 
-http://wiki2.redlibre.cl/index.php/Como_usar_el_MPU_Linkit_Smart_7688_conectado_a_Internet_mediante_MQTT_para_control_de_artefactos_el%C3%A9ctricos_por_Internet#Configurar_el_Linkit_Smart_por_primera_vez
+http://wiki2.redlibre.cl/index.php/Como_usar_el_MPU_Linkit_Smart_7688_conectado_a
+_Internet_mediante_MQTT_para_control_de_artefactos_el%C3%A9ctricos_por_Internet#Configurar_el_Linkit_Smart_
+por_primera_vez
 
 Next , enter by ssh to ip assigned by your router
 
