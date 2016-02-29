@@ -30,7 +30,19 @@ opkg update
 opkg install python-pip
 pip install paho-mqtt
 
-in revision...
+Ok, now download the file from github to /root 
+
+https://github.com/pumanzor/iot-redlibre/blob/master/linkit/easydriver/mqtt_easydriver_stepper.py
+
+then, go to this web site
+
+http://test.redlibre.cl
+
+click on "Connect" button, then put this string into "Topic" box
+
+/redlibre/test/motor/control/
+
+
 
 
 
