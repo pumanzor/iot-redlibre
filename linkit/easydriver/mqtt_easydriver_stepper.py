@@ -2,13 +2,19 @@ import paho.mqtt.client as mqtt
 import json, time
 import mraa
 
+#--------Motor Step ----------------------
 pin19 = mraa.Pwm(19)
+#-----------------------------------------
 
+#------------motor Enable/disable---------
 pin0 = mraa.Gpio(0)   
 pin0.dir(mraa.DIR_OUT)
+#----------------------------------------
 
+#------------motor Direction ------------
 pin1 = mraa.Gpio(1)
 pin1.dir(mraa.DIR_OUT)
+#----------------------------------
 
 # ----- CHANGE THESE FOR YOUR SETUP -----
 MQTT_HOST = "190.97.169.126" #Our free test MQTT server , please use with moderation
