@@ -1,3 +1,6 @@
+===================================================================================================================
+===================================================================================================================
+
 Hallo, this folder contain a programs to take control of stepper motor by Internet using MQTT broker and a
 linkit Smart 7688 dev board.
 
@@ -29,7 +32,7 @@ opkg update
 opkg install python-pip
 pip install paho-mqtt
 
-
+in revision...
 
 
 
