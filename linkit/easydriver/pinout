@@ -1,0 +1,3 @@
+linkit gpio1 to DIR Easydriver
+linkit gpio0 to ENAB Easydriver
+linkit gpio19 to STEP Easydriver
