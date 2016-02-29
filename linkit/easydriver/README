@@ -42,6 +42,14 @@ click on "Connect" button, then put this string into "Topic" box
 
 /redlibre/test/motor/control/
 
+Finally on box "Message" , we have three command 
+
+m1 turn left motor
+m2 turn right motor
+m0 stop motor
+
+then put m1 on Message box and voila..
+
 
 
 
