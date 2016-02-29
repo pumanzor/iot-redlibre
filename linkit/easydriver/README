@@ -1,0 +1,12 @@
+Hallo, this folder contain a programs to take control of stepper motor by Internet using MQTT broker and a
+linkit Smart 7688 dev board.
+
+Materials
+
+- 1 x Linkit Smart 7688  (http://store.redlibre.cl/index.php?id_product=65&controller=product)
+- 1 x Stepper Motor 2 phases
+- 1 x Easydriver v44 (http://store.redlibre.cl/index.php?id_product=71&controller=product)
+
+First of all, you need pre-configure the Linkit Smart 7688 with this
+
+- 
