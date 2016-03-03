@@ -33,9 +33,13 @@ pip install paho-mqtt
 
 Ok, now download the file from github to /root 
 
-https://github.com/pumanzor/iot-redlibre/blob/master/linkit/easydriver/mqtt_easydriver_stepper.py
+wget https://github.com/pumanzor/iot-redlibre/blob/master/linkit/easydriver/mqtt_easydriver_stepper.py
 
-then, go to this web site
+next, execute this command
+
+python mqtt_easydriver_stepper.py
+
+next, go to this web site
 
 http://test.redlibre.cl
 
