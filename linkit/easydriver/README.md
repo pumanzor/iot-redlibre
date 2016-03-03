@@ -49,19 +49,19 @@ click on "Connect" button, then put this string into "Topic" box
 
 Finally on box "Message" , we have three options command 
 
-m1 : turn left motor
-m2 : turn right motor
-m0 : stop motor
+m1 : turn left motor  
+m2 : turn right motor  
+m0 : stop motor  
 
-then put 
+then put  
 
-m1
+m1  
 
 on Message box and voila..
 
 to stop motor punt into "Message" box:
 
-m0
+m0  
 
 =======================================================================================
 
