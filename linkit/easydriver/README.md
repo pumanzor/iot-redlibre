@@ -1,4 +1,4 @@
-![alt tag](https://raw.githubusercontent.com/pumanzor/iot-redlibre/master/linkit/easydriver/Linkit_EDv44_step.png)
+![alt tag]
 ==================================================================================
 ==================================================================================
 
