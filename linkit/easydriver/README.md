@@ -27,9 +27,9 @@ ssh IP_Assigned_by_your_router -lroot
 
 Next, execute this commands
 
-opkg update
-opkg install python-pip
-pip install paho-mqtt
+opkg update   
+opkg install python-pip  
+pip install paho-mqtt  
 
 Ok, now download the file from github to /root 
 
