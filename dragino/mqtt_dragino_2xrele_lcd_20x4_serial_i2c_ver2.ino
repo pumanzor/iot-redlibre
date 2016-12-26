@@ -63,8 +63,8 @@ void loop() {
 
 
    
-   mqtt.publish("/pryxo/yxusers/lrojas/control/ui98h23d09h2d/rele/1",estadorele1);
-   mqtt.publish("/pryxo/yxusers/lrojas/control/ui98h23d09h2d/rele/2",estadorele2);
+   mqtt.publish("/pryxo/yxusers/98h23d09h2d/rele/1",estadorele1);
+   mqtt.publish("/pryxo/yxusers/98h23d09h2d/rele/2",estadorele2);
 /*lcd.home();
   lcd.setCursor(0,2);
   lcd.print("Status RELE 1X:");
